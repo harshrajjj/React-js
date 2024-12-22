@@ -81,7 +81,7 @@ function Header() {
                   // yha nav link k andar definr kie hai ki kha jaiga ye /about p ajiga kyu ki wha main .jsx m hum phly se sab define kar chuke hai
                   to="/github"
                   className={(
-                    { isActive } // ye css ko call back ki trh islie likhe h kyu ki jab ye likhte hai to ye ek argenent detea hai isActive jo {js } ki trh inject ho jata hai class name m and active hota hai wo to uske andar kud aa jata hai ki active hai jaise ki hum isme use kie hai
+                    { isActive } // ye css ko call back ki trh islie likhe h kyu ki jab ye likhte hai to ye ek argunent detea hai isActive jo {js } ki trh inject ho jata hai class name m and active hota hai wo to uske andar kud aa jata hai ki active hai jaise ki hum isme use kie hai
                   ) =>
                     `block py-2 pr-4 pl-3 duration-200 ${
                       isActive ? "text-orange-700" : "text-gray-700"

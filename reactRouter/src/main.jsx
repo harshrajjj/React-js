@@ -17,7 +17,7 @@ import Github,{githubinfoLoader} from './components/Github.jsx'
 // const router = createBrowserRouter([
 //   {
 //     path:"/",
-//     element:<Route/>,
+//     element:<Layout/>,
 //     children:[
 //       {
 //         path:"",
