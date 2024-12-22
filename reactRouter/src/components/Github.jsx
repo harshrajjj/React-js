@@ -12,11 +12,12 @@ function Github() {
     //     .then(data => useState(data))
     // },[])
 
-
+    console.log(data);
+    
     return (
         <div className='text-center m-4 bg-gray-600 text-white p-4 text-3xl '>
             Github Followers : {data?.followers}
-            <img src="{data?.avtar_url}" alt="Git Picture" width={300} />
+            <img src={data.avatar_url} alt="Git Picture" width={300} />
         </div>
     )
 }
@@ -25,6 +26,6 @@ export default Github
 
 
 export const githubinfoLoader= async () => {
-    const response = await fetch("https://api.github.com/users/harshrajjj")
+    const response = await fetch('https://api.github.com/users/harshrajjj')
     return  response.json();
 }

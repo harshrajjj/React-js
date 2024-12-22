@@ -41,7 +41,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path = "/" element={<Layout/>} >// kon sa element yha render hoga yha hum bta die h isko
       <Route path="" element={<Home/>} />// nesting  // outlet
-      <Route path="about" element={<About/>} />// nesting hai ye "/ k aandar kyu ki isko self closing dale hai if humko iske andar v routing karna hai to hum isko self closing nahi krenge then iske andar aur route likh denge"
+      <Route path="about" element={<About/>} />// nesting hai ye "/"" k aandar kyu ki isko self closing dale hai if humko iske andar v routing karna hai to hum isko self closing nahi krenge then iske andar aur route likh denge
       <Route path="contact" element={<Contact/>} />// nesting
       <Route path="user/:id" element={<User/>} />// nesting
       <Route 
