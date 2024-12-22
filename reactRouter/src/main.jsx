@@ -1,14 +1,28 @@
-import { StrictMode } from 'react'
+import  React,{ StrictMode,Suspense, } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router'
 import Layout from './Layout.jsx'
 import Home from './components/Home.jsx'
-import About from './components/About.jsx'
+// import About from './components/About.jsx'
+// const About = React.lazy(() => import('./components/About.jsx'))
+const About = React.lazy(() =>// here i have about page to load late so i can see suspence loading spinner 
+  new Promise(resolve => {
+    setTimeout(() => resolve(import('./components/About.jsx')), 3000); // Simulate 3-second delay before loading the About component
+  })
+);
+
+
+
+
+
+
 import Contact from './components/Contact.jsx'
 import { Route } from 'react-router'
 import User from './User/User.jsx'
 import Github,{githubinfoLoader} from './components/Github.jsx'
+import LoadingSpinner from './components/Loadingspinner/Loadingspinner';
+
 
 
 // routing
@@ -41,7 +55,10 @@ const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path = "/" element={<Layout/>} >// kon sa element yha render hoga yha hum bta die h isko
       <Route path="" element={<Home/>} />// nesting  // outlet
-      <Route path="about" element={<About/>} />// nesting hai ye "/"" k aandar kyu ki isko self closing dale hai if humko iske andar v routing karna hai to hum isko self closing nahi krenge then iske andar aur route likh denge
+      <Route path="about" element={
+        <Suspense fallback={<LoadingSpinner/>}>// upar m hum about ko lazy load karwai hai then yha suspence lagai hai taki lazy load time tak loading spinner dikhaii wo 
+            <About/>
+        </Suspense>} />// nesting hai ye "/"" k aandar kyu ki isko self closing dale hai if humko iske andar v routing karna hai to hum isko self closing nahi krenge then iske andar aur route likh denge
       <Route path="contact" element={<Contact/>} />// nesting
       <Route path="user/:id" element={<User/>} />// nesting
       <Route 
@@ -59,3 +76,16 @@ createRoot(document.getElementById('root')).render(
     <RouterProvider router={router}/>
   </StrictMode>,
 )
+
+
+
+
+// hydrate library use hota hai jab v hmara page load hota hai to// here i have use suspence 
+
+// import { Hydrate, HydrateFallback } from 'some-hydration-library';  
+
+// const App = () => (  
+//     <Hydrate fallback={<LoadingSpinner />}>  
+//         <YourComponent />  
+//     </Hydrate>  
+// );
